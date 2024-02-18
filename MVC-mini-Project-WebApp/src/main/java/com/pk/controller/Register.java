@@ -12,8 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.pk.model.Registration;
-@WebServlet(name="register", urlPatterns = "/register")
+@WebServlet(urlPatterns = "/register")
 public class Register extends HttpServlet {
+	
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -52,9 +54,10 @@ public class Register extends HttpServlet {
 						rd1.forward(request, response);
 					}
 				}else if (request.getParameter("login") != null) {
-					String mail = request.getParameter("email");
-					String pass = request.getParameter("pw");
+					String mail = request.getParameter("em");
+					String pass = request.getParameter("pass");
 					String status = reg.login(mail, pass);
+					System.out.println(status);
 					if (status.equals("success")) {
 						RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
 						rd1.forward(request, response);

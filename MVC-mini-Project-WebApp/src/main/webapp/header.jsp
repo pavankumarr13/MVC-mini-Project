@@ -26,7 +26,7 @@
         <a href="#" class="navbar-brand h1 align-top">Pentagon Space</a>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index.jsp" class="nav-link active">Home</a>
+            <a href="index.jsp" class="nav-link ">Home</a>
           </li>
           <%if(session.getAttribute("uname")!=null){ %>
          	<li class="nav-item uname">

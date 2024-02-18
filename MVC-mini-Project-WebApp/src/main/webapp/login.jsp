@@ -44,25 +44,24 @@
 	<%@include file="header.jsp"%>
 	<script>
 		jQuery.validator.addMethod("checkemail", function(value, element) {
-		 return (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value) || /^[0-9]{10}$/.test(value);
-		 }, "Please enter the email format as abc@gmail.com");
+		 return (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value) || /^[0-9]{10}$/.test(value));});
 		 
 		 jQuery(document).ready(function($) {$("#login").validate({
 				 rules: {
-					 email: {
+					 em: {
 						 required: true,
 						 checkemail: true
 					 },
-					 pw: {
+					 pass: {
 						 required: true,
 						 minlength: 6
 					 },
 				 },
 				 messages: {
-					 email: {
+					 em: {
 					 	required: "Please enter the email.",
 					 },
-					 pw: {
+					 pass: {
 						 required: "Please enter the password.",
 						 minlength: "Please enter the password greater than or equal to 6.",
 					 },
@@ -77,6 +76,7 @@
         <div class="row border rounded-5 bg-transparent pd-3 shadow box-area my-6">
         <% if (request.getAttribute("status") != null) {%>
  			<div id="msg"> <%= request.getAttribute("status")%></div>
+ 			
  		<%}%>
           <div class="col-12">
             <div class="row align-items-center px-3">
@@ -88,7 +88,7 @@
               	<div class="input-group mb-4">
                   <input
                     type="email"
-                    name="email"
+                    name="em"
                     class="form-control form-control-lg w-100 bg-light fs-6"
                     placeholder="Enter Email address"
                   />
@@ -96,20 +96,15 @@
                 <div class="input-group mb-4">
                   <input
                     type="password"
-                    name="pw"
+                    name="pass"
                     id="pw"
                     class="form-control form-control-lg bg-light w-100 fs-6"
                     placeholder="Enter Password"
                   />
                 </div>
-                <div class="input-group mb-1">
-                  <input
-                    type="submit"
-                    name="login"
-                    value="Login"
-                    class="btn btn-lg btn-success w-100 fs-6"
-                  />
-                </div>
+              
+                <button type="submit" class="btn btn-success w-100 fs-6" name="login">Submit</button>
+                  
                 <div style="text-align: center; margin-bottom: 15px;">
                     <a href="#" style="text-decoration: none; color: #fff;">Forgot password?</a>
                 </div>
