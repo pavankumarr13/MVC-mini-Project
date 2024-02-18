@@ -84,7 +84,7 @@
 	                <p class="h1" style="font-weight: 700;color: rgb(0,10,100); font-size: 30px;">Login</p>
 	              </div> 
 	        </div>
-              <form action="register" method="post" id="login">
+              <form action="login" method="post" id="login">
               	<div class="input-group mb-4">
                   <input
                     type="email"

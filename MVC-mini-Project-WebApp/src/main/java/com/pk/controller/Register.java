@@ -47,30 +47,13 @@ public class Register extends HttpServlet {
 						RequestDispatcher rd1 = request.getRequestDispatcher("login.jsp");
 						rd1.forward(request, response);
 
-					} else if (status.equals("failure")) {
+					} else{
 
 						request.setAttribute("status", "Registration failed");
 						RequestDispatcher rd1 = request.getRequestDispatcher("Registration.jsp");
 						rd1.forward(request, response);
 					}
-				}else if (request.getParameter("login") != null) {
-					String mail = request.getParameter("em");
-					String pass = request.getParameter("pass");
-					String status = reg.login(mail, pass);
-					System.out.println(status);
-					if (status.equals("success")) {
-						RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
-						rd1.forward(request, response);
-					} else if (status.equals("failure")) {
-						request.setAttribute("status", "Login failed");
-						RequestDispatcher rd1 = request.getRequestDispatcher("login.jsp");
-						rd1.forward(request, response);
-					}
-				} else if (request.getParameter("logout") != null) {
-					session.invalidate();
-					RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
-					rd1.forward(request, response);
-				} 
+				}
 			}
 
 		}catch(Exception e){

@@ -9,7 +9,7 @@
 <style type="text/css">
 	
 </style>
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body class="bg-basic">
 	<%@include file="header.jsp"%>
@@ -20,8 +20,8 @@
 		
 		<%if(request.getAttribute("status")!=null) {%>
 			<% if(request.getAttribute("status").equals("success")) { %>
-			<h2>Hello <%= request.getAttribute("uname") %></h2>
-	 		<h2>Your Id is <%=request.getAttribute("id") %></h2>
+			<h2>Hello <%= session.getAttribute("uname") %></h2>
+	 		<h2>Your Id is <%=session.getAttribute("id") %></h2>
 	 		<%} %>
 	 		<%} else{ %>
 	 		<h2>Please Login to access this !!!</h2>

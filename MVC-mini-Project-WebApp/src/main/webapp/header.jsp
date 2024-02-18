@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="remixicon.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/139efa477f.js"></script>
 <style type="text/css">
@@ -15,6 +16,12 @@
 	  box-sizing: border-box;
 	  font-family: "Poppins", sans-serif;
 	}
+	.navigation{
+		display:flex;
+		justify-content: space-between;
+		flex-direction: row-reverse;
+	}
+	
 	
 </style>
 <title>Header</title>
@@ -24,35 +31,47 @@
 	<div class="navbar navbar-expand navbar-dark bg-dark position-fixed w-100 " style="height: 60px">
       <div class="container">
         <a href="#" class="navbar-brand h1 align-top">Pentagon Space</a>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="index.jsp" class="nav-link ">Home</a>
-          </li>
+        <ul class="navbar-nav navigation">
+          
           <%if(session.getAttribute("uname")!=null){ %>
-         	<li class="nav-item uname">
-            <i class="fa-regular fa-user"></i><%=session.getAttribute("uname")%>
+         	<div class="navigation">
+         	<li class="nav-item uname d-flex">
+            <i class="user mr-2"></i><a href="#" class="nav-link"><%=session.getAttribute("uname")%></a>
           </li>
           <li class="nav-item">
-            <a href="reguster?logout=yes" class="nav-link">Logout</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Edit</a>
+            <a href="logout" class="nav-link">Logout</a>
+            
           </li>
           <%if(session.getAttribute("id").equals("1")){ %>
-          <li class="nav-item">
+          <div class="navigation">
+          	<li class="nav-item">
             <a href="#" class="nav-link">Delete</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Search</a>
           </li>
+          </div>
           <%} %>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">Edit</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.jsp" class="nav-link ">Home</a>
+          </li></div>
+          
           <%}else{ %>
+          <div class="navigation">
           <li class="nav-item">
             <a href="Registration.jsp" class="nav-link">Register</a>
           </li>
           <li class="nav-item">
             <a href="login.jsp" class="nav-link">Login</a>
           </li>
+          <li class="nav-item">
+            <a href="index.jsp" class="nav-link ">Home</a>
+          </li>
+          </div>
           <%} %>
           
         </ul>
