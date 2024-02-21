@@ -60,7 +60,7 @@
             <a href="#" class="nav-link">Delete</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Search</a>
+            <a href="Search.jsp" class="nav-link">Search</a>
           </li>
           </div>
           <%} %>

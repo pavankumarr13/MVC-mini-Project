@@ -39,7 +39,7 @@ public class Registration {
 			if (b) {
 				status = "existed";
 			} else {
-				ps = (PreparedStatement) con.prepareStatement("insert into mvc values(0,?,?,?,?,now())");
+				ps = con.prepareStatement("insert into mvc values(0,?,?,?,?,now())");
 				ps.setString(1, name);
 				ps.setString(2, phone);
 				ps.setString(3, email);
@@ -136,7 +136,7 @@ public class Registration {
             rs = st.executeQuery(qry);
             while (rs.next()) {
                 Student p = new Student();
-                p.setId(rs.getString("id"));
+                p.setId(Integer.toString(rs.getInt("id")));
                 p.setName(rs.getString("name"));
                 p.setEmail(rs.getString("email"));
                 p.setPhone(rs.getString("phone"));
