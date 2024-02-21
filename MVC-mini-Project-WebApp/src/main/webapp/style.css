@@ -50,3 +50,16 @@ a {
  padding: 5px;
 
  }
+ 
+ input{
+ 	background:transparent;
+ }
+ 
+ #errormsg{
+ 	background: green;
+	padding: 10px;
+	width: 50%;
+	color: white;
+	font-size:25px;
+	font-weight: bold;
+ }

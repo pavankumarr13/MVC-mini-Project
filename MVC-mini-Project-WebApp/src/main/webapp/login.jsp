@@ -74,17 +74,18 @@
 	<div class="container d-flex justify-content-center align-items-center">
 		
         <div class="row border rounded-5 bg-transparent pd-3 shadow box-area my-6">
-        <% if (request.getAttribute("status") != null) {%>
- 			<div id="msg"> <%= request.getAttribute("status")%></div>
- 			
- 		<%}%>
+        
           <div class="col-12">
             <div class="row align-items-center px-3">
+            <% if (request.getAttribute("status") != null) {%>
+ 			<div id="msg"> <%= request.getAttribute("status")%></div>
+ 			<%}%>
+ 			
 	              <div class="header-text mb-2 mt-4">
 	                <p class="h1" style="font-weight: 700;color: rgb(0,10,100); font-size: 30px;">Login</p>
 	              </div> 
 	        </div>
-              <form action="login" method="post" id="login">
+              <form action="register" method="post" id="login">
               	<div class="input-group mb-4">
                   <input
                     type="email"

@@ -10,6 +10,17 @@
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<style type="text/css">
+	#msg{
+		color:red;
+		text-align:center;
+		width:100%;
+		font-weight: bold;
+		font-size: 25px;
+		padding: 5px;
+		margin-top:10px;
+	}
+</style>
 </head>
 <body>
 	<%@include file="header.jsp"%>
@@ -75,11 +86,13 @@
    <div class="container d-flex justify-content-center align-items-center">
         <div
           class="row border rounded-5 bg-transparent pd-3 shadow box-area my-6">
-          <% if (request.getAttribute("status") != null) {%>
- 			<div id="msg" style=" margin-left:10px;"> <%= request.getAttribute("status")%></div>
- 		<%}%>
+          
           <div class="col-12">
+          
             <div class="row align-items-center px-3">
+            <% if (request.getAttribute("status") != null) {%>
+ 			<div id="msg" > <%= request.getAttribute("status")%></div>
+ 			<%}%>
               <div class="header-text mb-1 mt-2">
                 <p class="h1" style="font-weight: 700;color: rgb(4, 255, 46); font-size: 30px;">Register</p>
               </div>

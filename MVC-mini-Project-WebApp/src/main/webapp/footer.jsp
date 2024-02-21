@@ -19,6 +19,8 @@
 		margin: auto auto;
 	}
 	
+	
+	
 </style>
 <title>Footer</title>
 </head>

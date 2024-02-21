@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 import com.pk.model.Registration;
 @WebServlet(urlPatterns = "/register")
 public class Register extends HttpServlet {
-	
-	
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -54,10 +54,55 @@ public class Register extends HttpServlet {
 						rd1.forward(request, response);
 					}
 				}
-			}
+			}else if (request.getParameter("login") != null) {
+				String mail = request.getParameter("em");
+				String pass = request.getParameter("pass");
+				String status = reg.login(mail, pass);
+				System.out.println(status);
+				if (status.equals("success")) {
+					request.setAttribute("status", "Login Succesfully!");
+					RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
+					rd1.forward(request, response);
+				} else if (status.equals("failure")) {
+					request.setAttribute("status", "Login failed");
+					RequestDispatcher rd1 = request.getRequestDispatcher("login.jsp");
+					rd1.forward(request, response);
+				}
+			} else if (request.getParameter("logout") != null) {
+//				session.invalidate();
+//				RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
+//				rd1.forward(request, response);
+				doGet(request,response);
+			}else if (session.getAttribute("uname") != null && request.getParameter("submit") != null) {
+                String name = request.getParameter("uname");
+                String pno = request.getParameter("phone");
+                String email = request.getParameter("email");
+                Registration u = new Registration(session);
+                String status = u.update(name, pno, email);
+                if (status.equals("success")) {
+                    request.setAttribute("status", "Profile successfully Updated");
+                    RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
+                    rd1.forward(request, response);
+                } else {
+                    request.setAttribute("status", "Updation failure");
+                    RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
+                    rd1.forward(request, response);
+                }
+            }
+
 
 		}catch(Exception e){
 			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession se=request.getSession();
+		if(request.getParameter("logout")!=null) {
+			se.invalidate();
+			RequestDispatcher rd1 = request.getRequestDispatcher("index.jsp");
+			rd1.forward(request, response);
 		}
 	}
 
