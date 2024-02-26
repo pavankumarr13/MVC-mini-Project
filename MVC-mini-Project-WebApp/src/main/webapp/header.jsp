@@ -57,7 +57,7 @@
           <%if(session.getAttribute("id").equals("1")){ %>
           <div class="navigation">
           	<li class="nav-item">
-            <a href="#" class="nav-link">Delete</a>
+            <a href="Delete.jsp" class="nav-link">Delete</a>
           </li>
           <li class="nav-item">
             <a href="Search.jsp" class="nav-link">Search</a>

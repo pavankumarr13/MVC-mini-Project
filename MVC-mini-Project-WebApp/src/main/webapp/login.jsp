@@ -104,10 +104,10 @@
                   />
                 </div>
               
-                <button type="submit" class="btn btn-success w-100 fs-6" name="login">Submit</button>
+                <button type="submit" class="btn btn-success w-100 fs-6 mb-3" name="login">Submit</button>
                   
                 <div style="text-align: center; margin-bottom: 15px;">
-                    <a href="#" style="text-decoration: none; color: #fff;">Forgot password?</a>
+                    <a href="ForgotPass.jsp" style="text-decoration: none; color: #fff;">Forgot password?</a>
                 </div>
               </form>
             </div>

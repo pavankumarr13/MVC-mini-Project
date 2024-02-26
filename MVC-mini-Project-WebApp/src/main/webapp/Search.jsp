@@ -35,14 +35,14 @@
               >
               <input
                 type="text"
-                class="form-control bg-light mb-3"
+                class="form-control border-2 mb-3"
                 name="id"
               />
             </div>
             <div class="input-group ">
               <input
                 type="submit"
-                class="btn btn-success submit mb-3 fw-bold w-25 mx-auto"
+                class="btn btn-outline-success fs-5 submit mb-3 fw-bold px-4 mx-auto"
                 name="search"
                 value="Search"
               />

@@ -132,7 +132,7 @@ public class Registration {
         ArrayList<Student> al = new ArrayList<>();
         try {
             st = con.createStatement();
-            String qry = "select * from mvc where id = '" + id + "';";
+            String qry = "select * ,date_format(date,'%b-%d-%Y')as date1 from mvc where id = '" + id + "';";
             rs = st.executeQuery(qry);
             while (rs.next()) {
                 Student p = new Student();
@@ -140,7 +140,7 @@ public class Registration {
                 p.setName(rs.getString("name"));
                 p.setEmail(rs.getString("email"));
                 p.setPhone(rs.getString("phone"));
-                p.setDate(rs.getString("date"));
+                p.setDate(rs.getString("date1"));
                 al.add(p);
             }
         } catch (Exception e) {
@@ -149,6 +149,67 @@ public class Registration {
         return al;
     }
 
+	public String delete(int id) {
+		Statement ps=null;
+		int a;
+		String status="";
+		try {
+			ps=con.createStatement();
+			String sql="DELETE FROM mvc WHERE id='"+id+"';";
+			a=ps.executeUpdate(sql);
+			if(a>0) {
+				status="sucess";
+			}
+			else {
+				status="failure";
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+	
+	public ArrayList<Student> getUserDetails() {
+		Statement st=null;
+		ResultSet rs=null;
+		ArrayList<Student> al = new ArrayList<Student>();
+		try {
+			st = con.createStatement();
+			String qry = "select *,date_format(date,'%b-%d-%Y')as date1 from mvc where id not in(1);";
+			rs = st.executeQuery(qry);
+			while (rs.next()) {
+				Student p = new Student();
+				p.setId(Integer.toString(rs.getInt("id")));
+				p.setName(rs.getString("name"));
+				p.setEmail(rs.getString("email"));
+				p.setPhone(rs.getString("phone"));
+				p.setDate(rs.getString("date1"));
+				al.add(p);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return al;
+	}
+	
+	
+	public boolean updatePassword(String email,String password) {
+		boolean check = false;
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			int a=st.executeUpdate("update mvc set password='"+password+"'where email='"+email+"' ");
+			if(a>0) {
+				check=true;
+			}else {
+				System.out.println("Update password failed ");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return check;
+	}
 
 
 
